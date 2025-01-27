@@ -12,3 +12,28 @@ Este é um microserviço que gerencia a tabela `global-settings`, que é extraí
 
 A estrutura do projeto segue a seguinte organização:
 
+my-fastify-project/
+├── prisma/
+│   ├── schema.prisma             # Esquema do Prisma para a tabela "global-settings"
+│   └── migrations/               # Migrações do Prisma
+├── src/
+│   ├── routes/
+│   │   └── globalSettingsRoutes.ts   # Definições de rotas para o domínio "globalSettings"
+│   ├── entities/
+│   │   └── globalSettingsEntity.ts  # Entidade representando os dados da tabela "global-settings"
+│   ├── modules/
+│   │   ├── globalSettings/
+│   │   │   └── globalSettingsController.ts   # Controlador para operações de "globalSettings"
+│   │   │   └── globalSettingsService.ts      # Serviço que contém a lógica de negócios
+│   │   │   └── globalSettingsRepository.ts   # Repositório para interações com o banco (Prisma)
+│   │   │   └── globalSettings.test.ts       # Testes unitários para "globalSettings"
+│   ├── middlewares/
+│   │   └── authMiddleware.ts       # Middleware para autenticação (se necessário)
+│   └── utils/
+│       └── helpers.ts             # Funções auxiliares compartilhadas
+├── .env                           # Variáveis de ambiente (ex.: DATABASE_URL)
+├── .env.example                   # Exemplo de configurações de ambiente
+├── .gitignore                     # Arquivos ignorados pelo Git
+├── package.json                   # Configurações e dependências do projeto
+├── package-lock.json              # Arquivo de lock do npm
+└── README.md                      # Documentação do projeto
