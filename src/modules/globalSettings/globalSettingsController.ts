@@ -1,8 +1,14 @@
-import { FastifyRequest, FastifyReply } from 'fastify';
-import { createGlobalSettingService, getAllGlobalSettingsService } from './globalSettingsService';
-import { CreateGlobalSettingRequestBody } from '~/entities/globalSettingEntity';
+import { FastifyRequest, FastifyReply } from "fastify";
+import {
+  createGlobalSettingService,
+  getAllGlobalSettingsService,
+} from "./globalSettingsService";
+import { CreateGlobalSettingRequestBody } from "~/entities/globalSettingEntity";
 
-export const getAllGlobalSettings = async (req: FastifyRequest, reply: FastifyReply) => {
+export const getAllGlobalSettings = async (
+  req: FastifyRequest,
+  reply: FastifyReply
+) => {
   try {
     const settings = await getAllGlobalSettingsService();
     reply.send(settings);
@@ -11,12 +17,19 @@ export const getAllGlobalSettings = async (req: FastifyRequest, reply: FastifyRe
   }
 };
 
-export const createGlobalSetting = async (req: FastifyRequest<{ Body: CreateGlobalSettingRequestBody }>, reply: FastifyReply) => {
+export const createGlobalSetting = async (
+  req: FastifyRequest<{ Body: CreateGlobalSettingRequestBody }>,
+  reply: FastifyReply
+) => {
   const { key, value } = req.body;
-  
+
   try {
-    const setting = await createGlobalSettingService(key, value);
-    reply.status(201).send(setting);
+    const result = await createGlobalSettingService(key, value);
+    if (typeof result === "string") {
+      // Se for uma string, é um erro de validação
+      return reply.status(400).send({ error: result });
+    }
+    reply.status(201).send(result);
   } catch (error) {
     reply.status(500).send(error);
   }
