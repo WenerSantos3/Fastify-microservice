@@ -1,0 +1,16 @@
+generator client {
+  provider        = "prisma-client-js"
+  previewFeatures = ["prismaSchemaFolder"]
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model globalSettings {
+  id    Int    @id @default(autoincrement())
+  key   String
+  value String
+  @@map("global_settings")
+}
