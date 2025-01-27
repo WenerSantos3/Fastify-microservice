@@ -4,4 +4,5 @@ import { getAllGlobalSettings, createGlobalSetting } from '../modules/globalSett
 export async function globalSettingsRoutes(fastify: FastifyInstance) {
   fastify.get('/global-settings', getAllGlobalSettings);
   fastify.post('/global-settings', createGlobalSetting);
+  return fastify;
 }
