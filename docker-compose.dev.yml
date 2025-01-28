@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+  node:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: always
+    ports:
+      - "3009:3000"
+    volumes:
+      - micro-service-global-settings:/frontend
+    env_file:
+      - .env.development
+
+  nginx:
+    build:
+      context: .
+      dockerfile: local_nginx.Dockerfile
+    ports:
+      - "85:80"
+    depends_on:
+      - node
+
+volumes:
+  micro-service-global-settings:
+
