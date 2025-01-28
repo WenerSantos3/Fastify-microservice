@@ -25,11 +25,11 @@ Fastify-microservice/
 │   │   ├── globalSettings/
 │   │   │   │    └── tests/
 │   │   │   │         └── globalSettings.test.ts       # Testes unitários para "globalSettings"
+│   │   │   │    └── swagger/
+│   │   │   │         └── getGlobalSettings.ts   # Repositório para interações com o banco (Prisma)
 │   │   │   └── globalSettingsController.ts   # Controlador para operações de "globalSettings"
 │   │   │   └── globalSettingsService.ts      # Serviço que contém a lógica de negócios
 │   │   │   └── globalSettingsRepository.ts   # Repositório para interações com o banco (Prisma)
-│   │   ├── swagger/
-│   │   │   └── getGlobalSettings.ts   # Repositório para interações com o banco (Prisma)
 │   └── utils/
 │       └── helpers.ts             # Funções auxiliares compartilhadas
 ├── .env                           # Variáveis de ambiente (ex.: DATABASE_URL)
