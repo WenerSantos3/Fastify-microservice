@@ -9,7 +9,7 @@ app.register(globalSettingsRoutes);
 // Registrar o middleware globalmente
 // app.addHook('onRequest', testMiddleware);
 
-app.listen({port:3000}, (err, address) => {
+app.listen({port:4000}, (err, address) => {
   if (err) {
     console.log(err);
     process.exit(1);

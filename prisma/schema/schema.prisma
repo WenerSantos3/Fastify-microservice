@@ -10,7 +10,7 @@ datasource db {
 
 model globalSettings {
   id    Int    @id @default(autoincrement())
-  key   String
+  key   String @unique
   value String
   @@map("global_settings")
 }

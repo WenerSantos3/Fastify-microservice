@@ -4,7 +4,6 @@ export interface GlobalSetting {
   value: string;
 }
 
-export interface CreateGlobalSettingRequestBody {
+export interface getGlobalSettingsByKey {
   key: string;
-  value: string;
 }

@@ -2,6 +2,7 @@ import { GlobalSetting } from "../../entities/globalSettingEntity";
 import {
   createGlobalSettingRepository,
   getAllGlobalSettingsRepository,
+  getGlobalSettingsByKeysRepository,
 } from "./globalSettingsRepository";
 import { isValidField } from "../../utils/helpers";
 
@@ -23,4 +24,10 @@ export const createGlobalSettingService = async (
   }
 
   return createGlobalSettingRepository(key, value);
+};
+
+export const getGlobalSettingsByKeysService = async (
+  key: string
+): Promise<string | null> => {
+  return await getGlobalSettingsByKeysRepository(key);
 };
