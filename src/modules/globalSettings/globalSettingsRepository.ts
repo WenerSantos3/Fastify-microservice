@@ -15,9 +15,9 @@ export const createGlobalSettingRepository = async (key: string, value: string) 
 
 export const getGlobalSettingsByKeysRepository = async (key: string): Promise<string | null> => {
   const result = await prisma.globalSettings.findFirst({
-    where: { key }, // Aqui, 'key' é um campo único no modelo Prisma
-    select: { value: true }, // Seleciona apenas o campo 'value'
+    where: { key }, 
+    select: { value: true }, 
   });
 
-  return result?.value || null; // Retorna o valor ou null, caso não encontre
+  return result?.value || null; 
 };

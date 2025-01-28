@@ -1,22 +1,16 @@
 import { FastifyRequest, FastifyReply } from "fastify";
-import {
-  createGlobalSettingService,
-  getAllGlobalSettingsService,
-  getGlobalSettingsByKeysService,
+import { plainToClass } from "class-transformer";
+import { validateDto } from "../../utils/validation"; 
+import { 
+  createGlobalSettingService, 
+  getAllGlobalSettingsService, 
+  getGlobalSettingsByKeysService 
 } from "./globalSettingsService";
+import { CreateGlobalSettingDto } from "./DTO/CreateGlobalSettingDTO";
+import { GetGlobalSettingsByKeyDto } from "./DTO/GetGlobalSettingsByKeyDTO";
 
-interface CreateGlobalSettingRequestBody {
-  key: string;
-  value: string;
-}
-
-interface GetGlobalSettingsByKeyRequestBody {
-  key: string;
-}
-
-// Manipulador para obter todas as configurações globais
 export const getAllGlobalSettings = async (
-  req: FastifyRequest,
+  req: FastifyRequest, 
   reply: FastifyReply
 ) => {
   try {
@@ -27,12 +21,18 @@ export const getAllGlobalSettings = async (
   }
 };
 
-// Manipulador para criar uma configuração global
 export const createGlobalSetting = async (
-  req: FastifyRequest<{ Body: CreateGlobalSettingRequestBody }>,
+  req: FastifyRequest<{ Body: CreateGlobalSettingDto }>, 
   reply: FastifyReply
 ) => {
-  const { key, value } = req.body;
+  const createGlobalSettingDto = plainToClass(CreateGlobalSettingDto, req.body);
+
+  const validationErrors = await validateDto(createGlobalSettingDto);
+  if (validationErrors.length > 0) {
+    return reply.status(400).send({ errors: validationErrors });
+  }
+
+  const { key, value } = createGlobalSettingDto;
 
   try {
     const result = await createGlobalSettingService(key, value);
@@ -45,23 +45,22 @@ export const createGlobalSetting = async (
   }
 };
 
-// Manipulador para buscar configuração por chave
 export const getGlobalSettingsByKeys = async (
-  req: FastifyRequest<{ Body: GetGlobalSettingsByKeyRequestBody }>,
+  req: FastifyRequest<{ Body: GetGlobalSettingsByKeyDto }>, 
   reply: FastifyReply
 ) => {
+  const getGlobalSettingsByKeyDto = plainToClass(GetGlobalSettingsByKeyDto, req.body);
+
+  const validationErrors = await validateDto(getGlobalSettingsByKeyDto);
+  if (validationErrors.length > 0) {
+    return reply.status(400).send({ errors: validationErrors });
+  }
+
+  const { key } = getGlobalSettingsByKeyDto;
+
   try {
-    const { key } = req.body;
-
-    if (!key || key.trim().length === 0) {
-      return reply.status(400).send({ message: "Key is required" });
-    }
-
-    if(typeof key === 'string'){
-      const settings = await getGlobalSettingsByKeysService(key);
-      reply.send(settings);
-    }
-    reply.status(500).send({ error: "Failed to fetch settings by key" });
+    const settings = await getGlobalSettingsByKeysService(key);
+    reply.send(settings);
   } catch (error) {
     reply.status(500).send({ error: "Failed to fetch settings by key" });
   }
