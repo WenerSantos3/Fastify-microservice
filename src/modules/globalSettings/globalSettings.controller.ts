@@ -2,7 +2,7 @@ import { FastifyRequest, FastifyReply } from "fastify";
 import {
   createGlobalSettingService,
   getAllGlobalSettingsService,
-} from "./globalSettingsService";
+} from "./globalSettings.service";
 import { CreateGlobalSettingRequestBody } from "~/entities/globalSettingEntity";
 
 export const getAllGlobalSettings = async (

@@ -1,7 +1,7 @@
 // src/app.ts
 import { fastify } from "fastify";
 import { fastifyCors } from "@fastify/cors";
-import { globalSettingsRoutes } from "./routes/globalSettingsRoutes";
+import { globalSettingsRoutes } from "./routes/globalSettings.routes";
 import { fastifySwagger } from "@fastify/swagger";
 import { fastifySwaggerUi } from "@fastify/swagger-ui";
 import { swaggerConfig } from "../swagger/swagger";
@@ -10,6 +10,7 @@ const app = fastify();
 app.register(fastifyCors, { origin: "*" });
 
 app.register(fastifySwagger, swaggerConfig);
+
 app.register(fastifySwaggerUi, {
   routePrefix: "/docs",
 });
