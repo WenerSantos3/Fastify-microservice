@@ -1,0 +1,12 @@
+services:
+  app:
+    build:
+      context: .
+      dockerfile: node.Dockerfile
+    volumes:
+      - ./:/app
+    working_dir: /app
+    platform: linux/x86_64
+    command: sh -c "npm install && npx prisma generate && npm run dev"
+    ports:
+      - "3000:3000"

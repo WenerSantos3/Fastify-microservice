@@ -17,7 +17,7 @@ app.register(fastifySwaggerUi, {
 
 app.register(globalSettingsRoutes);
 
-app.listen({ port: 3000 }, (err, address) => {
+app.listen({ port: 3000, host: "0.0.0.0" }, (err, address) => {
   if (err) {
     console.log(err);
     process.exit(1);
