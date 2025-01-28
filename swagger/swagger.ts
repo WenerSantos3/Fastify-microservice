@@ -1,7 +1,7 @@
 export const swaggerConfig = {
   openapi: {
     info: {
-      title: "Typed API",
+      title: "GlobalSettings Documentation",
       version: "1.0.0",
     },
   },
