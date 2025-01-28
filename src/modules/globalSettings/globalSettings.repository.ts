@@ -12,3 +12,12 @@ export const createGlobalSettingRepository = async (key: string, value: string) 
     },
   });
 };
+
+export const getGlobalSettingsByKeysRepository = async (key: string): Promise<string | null> => {
+  const result = await prisma.globalSettings.findFirst({
+    where: { key }, 
+    select: { value: true }, 
+  });
+
+  return result?.value || null; 
+};
