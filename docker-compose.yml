@@ -9,4 +9,4 @@ services:
     platform: linux/x86_64
     command: sh -c "npm install && npx prisma generate && npm run dev"
     ports:
-      - "3000:3000"
+      - "3009:3000"
