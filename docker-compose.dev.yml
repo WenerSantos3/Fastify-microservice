@@ -10,6 +10,8 @@ services:
       - .:/usr/src/app
     networks:
       - app-network
+    env_file:
+      - fileName: .env.development
 
   nginx:
     image: nginx:alpine
