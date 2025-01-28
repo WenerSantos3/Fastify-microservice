@@ -10,3 +10,9 @@ services:
     command: sh -c "npm install && npx prisma generate && npm run dev"
     ports:
       - "3009:3000"
+    networks:
+      - greenn-network
+      
+networks:
+  greenn-network:
+    external: true
