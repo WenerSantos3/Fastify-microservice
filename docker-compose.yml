@@ -1,5 +1,6 @@
 services:
-  app:
+  svc-gbms-globalsettings:
+    container_name: svc-gbms-globalsettings
     build:
       context: .
       dockerfile: node.Dockerfile
