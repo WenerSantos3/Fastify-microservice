@@ -3,7 +3,7 @@ import {
   createGlobalSettingRepository,
   getAllGlobalSettingsRepository,
   getGlobalSettingsByKeysRepository,
-} from "./globalSettingsRepository";
+} from "./globalSettings.repository";
 import { isValidField } from "../../utils/helpers";
 
 export const getAllGlobalSettingsService = async (): Promise<GlobalSetting[]> => {

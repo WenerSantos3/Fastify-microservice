@@ -5,7 +5,7 @@ import {
   createGlobalSettingService, 
   getAllGlobalSettingsService, 
   getGlobalSettingsByKeysService 
-} from "./globalSettingsService";
+} from "./globalSettings.service";
 import { CreateGlobalSettingDto } from "./DTO/CreateGlobalSettingDTO";
 import { GetGlobalSettingsByKeyDto } from "./DTO/GetGlobalSettingsByKeyDTO";
 

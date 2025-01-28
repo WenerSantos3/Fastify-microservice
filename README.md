@@ -28,8 +28,6 @@ Fastify-microservice/
 │   │   │   └── globalSettingsController.ts   # Controlador para operações de "globalSettings"
 │   │   │   └── globalSettingsService.ts      # Serviço que contém a lógica de negócios
 │   │   │   └── globalSettingsRepository.ts   # Repositório para interações com o banco (Prisma)
-│   ├── middlewares/
-│   │   └── authMiddleware.ts       # Middleware para autenticação (se necessário)
 │   └── utils/
 │       └── helpers.ts             # Funções auxiliares compartilhadas
 ├── .env                           # Variáveis de ambiente (ex.: DATABASE_URL)

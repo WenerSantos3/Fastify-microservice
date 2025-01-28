@@ -1,5 +1,5 @@
 import Fastify, { FastifyInstance } from 'fastify';
-import { globalSettingsRoutes } from '../../../routes/globalSettingsRoutes';
+import { globalSettingsRoutes } from '../../../routes/globalSettings.routes';
 
 describe('Fastify App', () => {
   let app: FastifyInstance;

@@ -1,5 +1,5 @@
 import { FastifyInstance } from 'fastify';
-import { getAllGlobalSettings, createGlobalSetting, getGlobalSettingsByKeys } from '../modules/globalSettings/globalSettingsController';
+import { getAllGlobalSettings, createGlobalSetting, getGlobalSettingsByKeys } from '../modules/globalSettings/globalSettings.controller';
 
 export async function globalSettingsRoutes(fastify: FastifyInstance) {
   fastify.get('/global-settings', getAllGlobalSettings);
