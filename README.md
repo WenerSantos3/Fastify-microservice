@@ -8,6 +8,9 @@ Este é um microserviço que gerencia a tabela `global-settings`, que é extraí
 - **TypeScript**: Linguagem que adiciona tipagem estática ao JavaScript.
 - **Prisma**: ORM para interagir com o banco de dados de forma simples e segura.
 
+# Como rodar? 
+- **Rodar comando**: Make up ( para subir os containers ).
+
 ## Estrutura
 
 A estrutura do projeto segue a seguinte organização:
