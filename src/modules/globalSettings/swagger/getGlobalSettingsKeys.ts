@@ -16,6 +16,7 @@ export default {
     },
     response: {
       200: {
+        description: "Requisição bem-sucedida. Retorna o valor associado à key.",
         type: "object",
         properties: {
           value: { type: "string" },
